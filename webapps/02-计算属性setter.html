@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<p>{{getData}}</p>
+		</div>
+		
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#box",
+				data:{
+					
+				},
+				
+				computed:{
+					/*getData:function(){
+						return "111111";
+					}*/
+					getData:{
+						get:function(){
+							return "222222";
+						},
+						set:function(value){
+							console.log(value);
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
