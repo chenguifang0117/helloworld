@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			{{name}}
+			<p>{{name.substring(0,1).toUpperCase()+name.substring(1)}}</p>
+			<p>我是计算属性{{changeword}}</p>
+			<p>我是计算属性{{changeword}}</p>
+			<p>我是普通方法{{changewordMethod()}}</p>
+			<p>我是普通方法{{changewordMethod()}}</p>
+		</div>
+		
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#box",
+				data:{
+					name:"xiaoming"
+				},
+				
+				methods:{
+					changewordMethod:function(){
+						console.log("普通方法");
+						return this.name.substring(0,1).toUpperCase()+this.name.substring(1);
+					}
+				},
+				
+				computed:{
+					changeword:function(){
+						console.log("计算属性");
+						return this.name.substring(0,1).toUpperCase()+this.name.substring(1);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
