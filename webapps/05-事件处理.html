@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<p>{{count}}</p>
+			<button v-on:click="count=count-1">-</button>
+			<button v-on:click="count=count+1">+</button>
+			
+			<p>{{name}}</p>
+			<button @click="handleClick">click</button>
+			
+			<button @click="handleClick2('1111','2222',$event)">click2</button>
+			
+			<ul @click.self="handleUlClick">
+				<li @click="handleLiClick">11111</li>
+				<li @click.stop="handleLiClick">11111</li>
+				<li>22222</li>
+				<li>33333</li>
+			</ul>
+			
+			<input type="text" @keyup="handleKeyup"/>
+			
+			<input type="text" @keyup.enter="handleKeyup1"/>
+		</div>
+		
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#box",
+				data:{
+					count:1,
+					name:"xiaoming"
+				},
+				
+				methods:{
+					handleClick:function(ev){
+						console.log(ev.target);
+						this.name="aaaaaaa";
+					},
+					handleClick2:function(data1,data2,ev){
+						console.log(data1);
+						console.log(data2);
+						console.log(ev.target);
+					},
+					handleUlClick(){
+						console.log("Ul点击");
+					},
+					handleLiClick(){
+						console.log("Li点击");
+					},
+					handleKeyup(ev){					
+						if(ev.keyCode==13){
+							console.log(ev.target.value);
+						}
+					},
+					handleKeyup1(ev){					
+					    console.log(ev.target.value);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
